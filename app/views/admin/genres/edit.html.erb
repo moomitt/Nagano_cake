@@ -5,7 +5,7 @@
       
       <%= form_with model: @genre, url: admin_genre_path do |f| %>
         <%= f.label 'ジャンル名' %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "ジャンル名" %>
+        <%= f.text_field :name %>
         <%= f.submit "変更を保存", :class => "btn btn-success" %>
       <% end %>
       
