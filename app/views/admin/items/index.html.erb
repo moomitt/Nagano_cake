@@ -1,2 +1,30 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <label class="my-5">商品一覧</label>
+      <%= link_to '+', new_admin_item_path, :class => "btn btn-success.rounded-curcle.p-0" %>
+      
+      <table class="table">
+        <thead>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </thead>
+        <tbody>
+          <% @items.each do|item| %>
+            <tr>
+              <td><%= item.id %></td>
+              <td><%= link_to item.name, admin_item_path(item.id) %></td>
+              <td><%= item.price %></td>
+              <td><%= item.genre %></td>
+              <td><%= item.status %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+</div>

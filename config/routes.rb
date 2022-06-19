@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
-    resources :cart_items, only: [:index, :update, :desroy, :empty, :create]
+    resources :cart_items, only: [:index, :update, :destroy, :empty, :create]
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   
