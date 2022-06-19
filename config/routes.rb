@@ -13,12 +13,11 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :cusromers, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :create, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
   end
   
-  namespace :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
@@ -26,7 +25,6 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :update, :desroy, :empty, :create]
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-  end
   
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
