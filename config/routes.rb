@@ -18,13 +18,13 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
   end
   
-    root to: 'homes#top'
-    get 'about' => 'homes#about'
-    resources :items, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
-    resources :cart_items, only: [:index, :update, :destroy, :empty, :create]
-    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
-    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  root to: 'homes#top'
+  get 'about' => 'homes#about'
+  resources :items, only: [:index, :show]
+  resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
+  resources :cart_items, only: [:index, :update, :destroy, :empty, :create]
+  resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
