@@ -22,7 +22,7 @@
       
       <div class="form-group">
         <label for="item_genre">ジャンル</label>
-        <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id] } %>
+        <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id] }, include_blank: "-- 選択してください --" %>
       </div>
       
       <div class="form-group">
