@@ -21,10 +21,23 @@ Rails.application.routes.draw do
   scope module: 'public' do
     root to: 'homes#top'
     get 'about' => 'homes#about'
+    
     resources :items, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update, :confirm, :withdraw]
-    resources :cart_items, only: [:index, :update, :destroy, :empty, :create]
-    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+    
+    get 'customers/mypage' => 'customers#show'
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/information' => 'customers#edit'
+    get 'customers/withdraw_confirm' => 'customers#confirm'
+    patch 'customers/withdraw'
+    
+    delete 'cart_items/:id' => 'cart_items#destroy', as: 'destroy_cart_item'
+    delete 'cart_items/empty', as: 'empty_cart_item'
+    resources :cart_items, only: [:index, :update, :create]
+    
+    patch 'orders/confirm'
+    get 'orders/complete'
+    resources :orders, only: [:new, :create, :index, :show]
+    
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
   

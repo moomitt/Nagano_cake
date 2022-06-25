@@ -37,15 +37,15 @@
                 <li class="nav-item">
                   <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, :class => "btn btn-outline-secondary mx-3" %>
                 </li>
-              <% elsif customer_signed_in? %> <!-- まだ作っていない -->
+              <% elsif customer_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to 'About', about_path, :class => "btn btn-outline-secondary mx-3" %>
+                  <%= link_to 'マイページ', customers_mypage_path, :class => "btn btn-outline-secondary mx-3" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to '商品一覧', items_path, :class => "btn btn-outline-secondary mx-3" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to '新規登録', new_customer_registration_path, :class => "btn btn-outline-secondary mx-3" %>
+                  <%= link_to 'カート', cart_items_path, :class => "btn btn-outline-secondary mx-3" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, :class => "btn btn-outline-secondary mx-3" %>
