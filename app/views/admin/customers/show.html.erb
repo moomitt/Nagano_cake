@@ -1,6 +1,59 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <label class="my-5 bg-secondary"><%= @custoemer.last_name %><%= @customer.first_name %>さんの会員詳細</label>
+      <label class="my-5 bg-secondary"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</label>
       
-     <div class="">
+      <div class="group">
+        <label class="col-sm-3">会員ID</label>
+        <%= @customer.id %>
+      </div>
+      
+      <div class="group">
+        <label class="col-sm-3">氏名</label>
+        <%= @customer.last_name %>　<%= @customer.first_name %>
+      </div>
+      
+      <div class="group">
+        <label class="col-sm-3">フリガナ</label>
+        <%= @customer.last_name_kana %>　<%= @customer.first_name_kana %>
+      </div>
+      
+      <div class="group">
+        <label class="col-sm-3">郵便番号</label>
+        <%= @customer.postal_code %>
+      </div>
+      
+      <div class="group">
+        <label class="col-sm-3">住所</label>
+        <%= @customer.address %>
+      </div>
+      
+      <div class="group">
+        <label class="col-sm-3">電話番号</label>
+        <%= @customer.telephone_number %>
+      </div>
+      
+      <div class="group">
+        <label class="col-sm-3">メールアドレス</label>
+        <%= @customer.email %>
+      </div>
+      
+      <div class="group">
+        <label class="col-sm-3">会員ステータス</label>
+        <% if @customer.is_deleted? %>
+          <span class="text-secondary"><strong>退会</strong></span>
+        <% else %>
+          <span class="text-success"><strong>有効</strong></span>
+        <% end %>
+      </div>
+      
+      <div class="group">
+        <label class="col-sm-3"></label>
+        <%= link_to '編集する', edit_admin_customer_path, :class => "btn btn-success px-3 mr-5" %>
+        <%= link_to '注文履歴一覧を見る', edit_admin_customer_path, :class => "btn btn-primary px-3" %>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    
