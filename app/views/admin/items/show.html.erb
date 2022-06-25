@@ -1,36 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <label class="my-5 bg-secondary.bg-opacity-75 px-3">商品詳細</label>
+      <h5 class="d-inline-block bg-light my-5 mx-5 px-3">商品詳細</h5></br>
       
-      <div class="col-lg-6">
-        <div class="group">
-          <%= image_tag @item.get_item_image(300, 300) %>
-        </div>
+    
+      <div class="col-6 d-inline-block">
+        <%= image_tag @item.get_item_image(300, 300) %>
       </div>
       
-      <div class="col-lg-6">
-        <div class="group">
+      <div class="col-6 d-inline-block">
+        <div class="group d-inline-block">
           <label for="item_name">商品名</label>
           <%= @item.name %>
         </div>
         
-        <div class="group">
+        <div class="group d-inline-block">
           <label for="item_introduction">商品説明</label>
           <%= @item.introduction %>
         </div>
         
-        <div class="group">
+        <div class="group d-inline-block">
           <label for="item_genre">ジャンル</label>
           <%= @item.genre.name %>
         </div>
         
-        <div class="group">
+        <div class="group d-inline-block">
           <label for="item_price">税込価格(税抜価格)</label>
-          <%= (@item.price*1.1).round %> (<%= @item.price %>) 円
+          <%= (@item.price*1.1).round.to_s(:delimited, delimiter: ',') %>
+          (<%= @item.price.to_s(:delimited, delimiter: ',') %>) 円
         </div>
         
-        <div class="group">
+        <div class="group d-inline-block">
           <label for="item_is_active">販売ステータス</label>
           <% if @item.is_active? %>
             <span>販売中</span>
@@ -39,7 +39,7 @@
           <% end %>
         </div>
         
-        <div class="group">
+        <div class="group d-inline-block">
           <%= link_to "編集する", edit_admin_item_path(@item.id), :class => "btn btn-success" %>
         </div>
       </div>

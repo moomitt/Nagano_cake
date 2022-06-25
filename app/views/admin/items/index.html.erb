@@ -1,8 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <label class="my-5 bg-secondary">商品一覧</label>
-      <%= link_to '+', new_admin_item_path, :class => "btn btn-success.rounded-curcle.p-0" %>
+      <h5 class="d-inline-block bg-light my-5 mx-5 px-3">商品一覧</h5>
+      
+      <div class="d-inline-block my-5 ml-auto mr-5" >
+        <%= link_to '+', new_admin_item_path, :class => "btn btn-lg btn-outline-secondary rounded-circle p-0",
+      :style =>"width:2rem;height:2rem;" %>
+      </div>
+      
       
       <table class="table">
         <thead>
@@ -17,7 +22,7 @@
             <tr>
               <td><%= item.id %></td>
               <td><%= link_to item.name, admin_item_path(item.id) %></td>
-              <td><%= item.price %></td>
+              <td><%= item.price.to_s(:delimited, delimiter: ',') %></td>
               <td><%= item.genre.name %></td>
               <% if item.is_active? %>
                 <td>販売中</td>
@@ -32,3 +37,7 @@
     </div>
   </div>
 </div>
+
+        
+      </div>
+     
