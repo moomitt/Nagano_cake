@@ -1,6 +1,6 @@
 <h2>新規会員登録</h2>
 
-<%= form_with model: @cusotomer, url: customer_registration_path, :class => "form-horizontal" do |f| %>
+<%= form_with model: @customer, url: customer_registration_path, :class => "form-horizontal" do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
   
   <div class="row mb-3">
