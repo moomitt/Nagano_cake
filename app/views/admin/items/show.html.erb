@@ -2,48 +2,55 @@
   <div class="row">
     <div class="col-12">
       <h5 class="d-inline-block bg-light my-5 mx-5 px-3">商品詳細</h5></br>
-      
+    </div>
     
-      <div class="col-6 d-inline-block">
-        <%= image_tag @item.get_item_image(300, 300) %>
+    <div class="row">
+      <div class="col-lg-4 d-inline-block">
+        <%= image_tag @item.get_item_image(300, 200), :class => "img_fluid" %></div>
       </div>
       
-      <div class="col-6 d-inline-block">
-        <div class="group d-inline-block">
-          <label for="item_name">商品名</label>
-          <%= @item.name %>
-        </div>
-        
-        <div class="group d-inline-block">
-          <label for="item_introduction">商品説明</label>
-          <%= @item.introduction %>
-        </div>
-        
-        <div class="group d-inline-block">
-          <label for="item_genre">ジャンル</label>
-          <%= @item.genre.name %>
-        </div>
-        
-        <div class="group d-inline-block">
-          <label for="item_price">税込価格(税抜価格)</label>
-          <%= (@item.price*1.1).round.to_s(:delimited, delimiter: ',') %>
-          (<%= @item.price.to_s(:delimited, delimiter: ',') %>) 円
-        </div>
-        
-        <div class="group d-inline-block">
-          <label for="item_is_active">販売ステータス</label>
-          <% if @item.is_active? %>
-            <span>販売中</span>
-          <% else %>
-            <span>販売中止</span>
-          <% end %>
-        </div>
-        
-        <div class="group d-inline-block">
-          <%= link_to "編集する", edit_admin_item_path(@item.id), :class => "btn btn-success" %>
+      <div class="col-lg-8 d-inline-block px-5">
+          <div class="row">
+            <label class="col-sm-3"><small>ジャンル</small></label>
+            <p class="col-sm-5"><%= @item.name %></p>
+          </div>
+          
+          <div class="row">
+            <label class="col-sm-3"><small>商品説明</small></label>
+            <p class="col-sm-5"><%= @item.introduction %></p>
+          </div>
+          
+          <div class="row">
+            <label class="col-sm-3"><small>ジャンル</small></label>
+            <p class="col-sm-5"><%= @item.genre.name %></p>
+          </div>
+          
+          <div class="row">
+            <label class="col-sm-3"><small>税込価格</br>(税抜価格)</small></label>
+            <p class="col-sm-5">
+              <%= (@item.price*1.1).round.to_s(:delimited, delimiter: ',') %>
+              (<%= @item.price.to_s(:delimited, delimiter: ',') %>) 円
+            </p>
+          </div>
+          
+          <div class="row">
+            <label class="col-sm-3"><small>販売ステータス</small></label>
+            <p class="col-sm-5">
+              <% if @item.is_active? %>
+                <span class="text-success"><strong>販売中</strong></span>
+              <% else %>
+                <span class="text-secondary"><strong>販売中止</strong></span>
+              <% end %>
+            </p>
+          </div>
+          
+          <div class="row">
+            <%= link_to "編集する", edit_admin_item_path(@item.id), :class => "btn btn-success px-3 mt-3 ml-5" %>
+          </div>
         </div>
       </div>
       
     </div>
+    
   </div>
 </div>

@@ -10,7 +10,7 @@
       
       
       <table class="table">
-        <thead>
+        <thead class="table-active">
           <th>商品ID</th>
           <th>商品名</th>
           <th>税抜価格</th>
@@ -21,13 +21,13 @@
           <% @items.each do|item| %>
             <tr>
               <td><%= item.id %></td>
-              <td><%= link_to item.name, admin_item_path(item.id) %></td>
+              <td><u><%= link_to item.name, admin_item_path(item.id) %></u></td>
               <td><%= item.price.to_s(:delimited, delimiter: ',') %></td>
               <td><%= item.genre.name %></td>
               <% if item.is_active? %>
-                <td>販売中</td>
+                <td class="text-success"><strong>販売中</strong></td>
               <% else %>
-                <td>販売中止</td>
+                <td class="text-secondary"><strong>販売中止</strong></td>
               <% end %>
             </tr>
           <% end %>
