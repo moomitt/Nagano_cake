@@ -4,25 +4,25 @@
       <h5 class="d-inline-block bg-light my-5 mx-5 px-3">商品新規登録</h5></br>
     </div>
       
-    <div class="col-8 mx-auto">
+    <div class="col-9 mx-auto">
       <%= form_with model: @item, url: admin_items_path, :class => "form-horizontal" do |f| %>
         
         <div class="row mb-3">
-          <label class="col-sm-2 control-label">商品画像</label>
+          <label class="col-sm-3 control-label">商品画像</label>
           <div class="col-sm-6">
             <%= f.file_field :item_image %>
           </div>
         </div>
         
         <div class="row mb-3">
-          <label class="col-sm-2 control-label">商品名</label>
+          <label class="col-sm-3 control-label">商品名</label>
           <div class="col-sm-6">
             <%= f.text_field :name, :placeholder => "商品名", :class => "form-control" %>
           </div>
         </div>
         
         <div class="row mb-3">
-          <label class="col-sm-2 control-label">商品説明</label>
+          <label class="col-sm-3 control-label">商品説明</label>
           <div class="col-sm-6">
             <%= f.text_area :introduction, :placeholder => "ここに説明文を記述します",
             :class => "form-control", :rows => "5" %>
@@ -30,7 +30,7 @@
         </div>
         
         <div class="row mb-3">
-          <label class="col-sm-2 control-label">ジャンル</label>
+          <label class="col-sm-3 control-label">ジャンル</label>
           <div class="col-sm-6">
             <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id] },
             include_blank: "-- 選択してください --" %>
@@ -38,14 +38,14 @@
         </div>
         
         <div class="row mb-3">
-          <label class="col-sm-2 control-label">税抜価格</label>
+          <label class="col-sm-3 control-label">税抜価格</label>
           <div class="col-sm-6">
             <%= f.text_field :price, :placeholder => "1000", :class => "form-control" %>円
           </div>
         </div>
         
         <div class="row mb-3">
-          <label class="col-sm-2 control-label">販売ステータス</label>
+          <label class="col-sm-3 control-label">販売ステータス</label>
           <div class="col-sm-6">
             <%= f.radio_button :is_active, :true, :class => "form-chexk-input mx-1 my-1" %> 販売中　
             <%= f.radio_button :is_active, :false, :class => "orm-chexk-input mx-1 my-1" %> 販売停止中            
@@ -53,7 +53,7 @@
         </div>
         
         <div class="row mb-6">
-          <label class="col-sm-2 control-label"></label>
+          <label class="col-sm-3 control-label"></label>
           <%= f.submit "新規登録", :class => "btn btn-success mx-5 px-4" %>
         </div>
         
