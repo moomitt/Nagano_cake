@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <label class="my-5 bg-secondary">会員一覧</label>
-      
+      <h5 class="d-inline-block bg-light my-5 mx-5 px-3">会員一覧</h5></br>
+    </div>
+    
+    <div class="col-10 mx-auto">
       <table class="table">
-        <thead>
+        <thead class="table-active">
           <th>会員ID</th>
-          <th>氏名</th>
+          <th><u>氏名</u></th>
           <th>メールアドレス</th>
           <th>ステータス</th>
         </thead>
@@ -14,7 +16,7 @@
           <% @customers.each do|customer| %>
             <tr>
               <td><%= customer.id %></td>
-              <td><%= link_to customer.last_name+customer.first_name, admin_customer_path(customer.id) %></td>
+              <td><u><%= link_to customer.last_name+customer.first_name, admin_customer_path(customer.id) %></u></td>
               <td><%= customer.email %></td>
               <% if customer.is_deleted? %>
                 <td class="text-secondary"><strong>退会</strong></td>
@@ -25,8 +27,8 @@
           <% end %>
         </tbody>
       </table>
-      
     </div>
+    
   </div>
 </div>
 

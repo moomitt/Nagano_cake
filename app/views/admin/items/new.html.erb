@@ -45,12 +45,14 @@
         </div>
         
         <div class="row mb-3">
-          <label class="col-sm-3 control-label">販売ステータス</label>
-          <div class="col-sm-6">
-            <%= f.radio_button :is_active, :true, :class => "form-chexk-input mx-1 my-1" %> 販売中　
-            <%= f.radio_button :is_active, :false, :class => "orm-chexk-input mx-1 my-1" %> 販売停止中            
+            <label class="col-sm-3 control-label">販売ステータス</label>
+            <div class="col-sm-6 form-check form-check-inline px-2">
+              <%= f.radio_button :is_active, :true, :class => "form-check-input mx-2" %>
+              <label class="form-check-label">販売中</label>
+              <%= f.radio_button :is_active, :false, :class => "form-check-input mx-2" %>
+              <label class="form-check-label">販売停止中</label>
+            </div>
           </div>
-        </div>
         
         <div class="row mb-6">
           <label class="col-sm-3 control-label"></label>
