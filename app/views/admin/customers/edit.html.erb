@@ -9,13 +9,14 @@
     <div class="col-10 mx-auto">
       
       <%= form_with model: @customer, url: admin_customer_path(@customer.id), :class => "form-horizontal" do |f| %>
-        <div class="row mb-3">
+      
+        <div class="row mb-3 d-flex align-items-center">
           <label class="col-sm-3">会員ID</label>
-          <div class="col-sm-3 ml-3"><%= @customer.id %></div>
+          <div class="col-sm-3 ml-3 mb-2"><%= @customer.id %></div>
         </div>
       
-        <div class="row mb-3">
-          <label class="col-sm-3 control-label">氏名</label>
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">氏名</label>
           <div class="col-sm-3">
             <%= f.text_field :last_name, :class => "form-control" %>
           </div>
@@ -24,8 +25,8 @@
           </div>
         </div>
         
-        <div class="row mb-3">
-          <label class="col-sm-3 control-label">フリガナ</label>
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">フリガナ</label>
           <div class="col-sm-3">
             <%= f.text_field :last_name_kana, :class => "form-control" %>
           </div>
@@ -34,36 +35,36 @@
           </div>
         </div>
         
-        <div class="row mb-3">
-          <label class="col-sm-3 control-label">郵便番号</label>
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">郵便番号</label>
           <div class="col-sm-3">
             <%= f.text_field :postal_code, :class => "form-control" %>
           </div>
         </div>
         
-        <div class="row mb-3">
-          <label class="col-sm-3 control-label">住所</label>
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">住所</label>
           <div class="col-sm">
             <%= f.text_field :address, :class => "form-control" %>
           </div>
         </div>
         
-        <div class="row mb-3">
-          <label class="col-sm-3 control-label">電話番号</label>
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">電話番号</label>
           <div class="col-sm-3">
             <%= f.text_field :telephone_number, :class => "form-control" %>
           </div>
         </div>
         
-        <div class="row mb-3">
-          <label class="col-sm-3 control-label">メールアドレス</label>
+        <div class="row mb-4 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">メールアドレス</label>
           <div class="col-sm-3">
             <%= f.email_field :email, :class => "form-control" %>
           </div>
         </div>
         
         <div class="row mb-5">
-          <label class="col-sm-3 control-label">会員ステータス</label>
+          <label class="col-sm-3 control-label mb-0">会員ステータス</label>
           <div class="col-sm-6 form-check form-check-inline px-2">
               <%= f.radio_button :is_deleted, :false, :class => "form-check-input mx-2" %>
               <label class="form-check-label">有効</label>

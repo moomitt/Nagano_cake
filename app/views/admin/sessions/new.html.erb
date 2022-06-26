@@ -1,24 +1,35 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h3 class="my-5">管理者ログイン</h3>
-
-      <%= form_with model: @admin, url: admin_session_path do |f| %>
-      <div class="field">
-        <%= f.label 'メールアドレス' %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-
-      <div class="field">
-        <%= f.label 'パスワード' %>
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "ログイン" %>
-      </div>
-    <% end %>
+      <h5 class="d-inline-block bg-light my-5 mx-5 px-3">管理者ログイン</h5></br>
     </div>
+    
+    <div class="col-8 mx-auto">
+      <%= form_with model: @admin, url: admin_session_path, :class => "form-horizontal" do |f| %>
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 mb-0">メールアドレス</label>
+          <div class="col-sm">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com", :class => "form-control" %>
+          </div>
+        </div>
+        
+        <div class="row mb-5 d-flex align-items-center">
+          <label class="col-sm-3 mb-0">パスワード</label>
+          <div class="col-sm">
+            <%= f.password_field :password, autocomplete: "current-pccassword", :class => "form-control" %>
+          </div>
+        </div>
+        
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 mb-0"></label>
+          <div class="col-sm">
+            <%= f.submit "ログイン", :class => "btn btn-primary px-5 py-2" %>
+          </div>
+        </div>
+        
+      <% end %>
+    </div>
+      
   </div>
 </div>
 

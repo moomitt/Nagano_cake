@@ -7,56 +7,56 @@
       <div class="col-9 mx-auto">
         <%= form_with model: @item, url: admin_item_path(@item.id), :class => "form-horizontal" do |f| %>
           
-          <div class="row mb-3">
-            <label class="col-sm-3 control-label">商品画像</label>
+          <div class="row mb-3 d-flex align-items-center">
+            <label class="col-sm-3 control-label mb-0">商品画像</label>
             <div class="col-sm-6">
               <%= f.file_field :item_image %>
             </div>
           </div>
           
-          <div class="row mb-3">
-            <label class="col-sm-3 control-label">商品名</label>
+          <div class="row mb-3 d-flex align-items-center">
+            <label class="col-sm-3 control-label mb-0">商品名</label>
             <div class="col-sm-6">
               <%= f.text_field :name, :placeholder => "商品名", :class => "form-control" %>
             </div>
           </div>
           
-          <div class="row mb-3">
-            <label class="col-sm-3 control-label">商品説明</label>
+          <div class="row mb-3 d-flex align-items-start">
+            <label class="col-sm-3 control-label mt-2">商品説明</label>
             <div class="col-sm-6">
               <%= f.text_area :introduction, :placeholder => "ここに説明文を記述します",
               :class => "form-control", :rows => "5" %>
             </div>
           </div>
           
-          <div class="row mb-3">
-            <label class="col-sm-3 control-label">ジャンル</label>
+          <div class="row mb-3 d-flex align-items-center">
+            <label class="col-sm-3 control-label mb-0">ジャンル</label>
             <div class="col-sm-6">
               <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id] },
               include_blank: "-- 選択してください --" %>
             </div>
           </div>
           
-          <div class="row mb-3">
-            <label class="col-sm-3 control-label">税抜価格</label>
+          <div class="row mb-3 d-flex align-items-center">
+            <label class="col-sm-3 control-label mb-0">税抜価格</label>
             <div class="col-sm-6">
               <%= f.text_field :price, :placeholder => "1000", :class => "form-control" %>円
             </div>
           </div>
           
-          <div class="row mb-3">
-            <label class="col-sm-3 control-label">販売ステータス</label>
+          <div class="row mb-4 d-flex align-items-center">
+            <label class="col-sm-3 control-label mb-0">販売ステータス</label>
             <div class="col-sm-6 form-check form-check-inline px-2">
               <%= f.radio_button :is_active, :true, :class => "form-check-input mx-2" %>
-              <label class="form-check-label">販売中</label>
+              <label class="form-check-label">販売中　</label>
               <%= f.radio_button :is_active, :false, :class => "form-check-input mx-2" %>
               <label class="form-check-label">販売停止中</label>
             </div>
           </div>
       
-          <div class="row mb-6">
-            <label class="col-sm-3 control-label"></label>
-            <%= f.submit "変更を保存", :class => "btn btn-success mx-5 px-4" %>
+          <div class="row mb-3 d-flex align-items-center">
+            <label class="col-sm-3 control-label mb-0"></label>
+            <%= f.submit "変更を保存", :class => "btn btn-success mx-5 px-5" %>
           </div>
           
         <% end %>
