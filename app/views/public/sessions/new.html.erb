@@ -1,26 +1,49 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-12">
+      <h5 class="d-inline-block bg-light mt-5 mx-5 px-3">ログイン</h5></br>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    
+    <div class="col-12 ml-3">
+      <h6 class="d-inline-block bg-light my-4 mx-5 px-3">会員の方はこちらからログイン</h6></br>
+    </div>
+    
+    <div class="col-lg-8 mx-auto">
+      <%= form_with model: @customer, url: customer_session_path, :class => "form-horizontal" do |f| %>
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 mb-0">メールアドレス</label>
+          <div class="col-sm">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "sample@example.com", :class => "form-control" %>
+          </div>
+        </div>
+        
+        <div class="row mb-5 d-flex align-items-center">
+          <label class="col-sm-3 mb-0">パスワード</label>
+          <div class="col-sm">
+            <%= f.password_field :password, autocomplete: "current-password", :class => "form-control" %>
+          </div>
+        </div>
+        
+         <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 mb-0"></label>
+          <div class="col-sm">
+            <%= f.submit "ログイン", :class => "btn btn-primary px-5 py-2" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="col-12 ml-3 mt-3">
+      <h6 class="d-inline-block bg-light my-3 mx-5 px-3">会員登録がお済みでない方</h6>
+    </div>
+    
+    <div class="col-8 mx-auto">
+      <p class="my-0">
+        <u><%= link_to 'こちら', new_customer_registration_path, :id => "signup-path" %></u>　から新規登録を行ってください。
+      </p>
+    </div>
+    
   </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>
