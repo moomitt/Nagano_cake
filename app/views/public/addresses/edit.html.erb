@@ -1,2 +1,33 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h5 class="d-inline-block bg-light my-5 mx-5 px-3">配送先編集</h5></br>
+    </div>
+    
+    <div class="col-10 mx-auto">
+      <%= form_with model: @address, url: address_path(@address.id), :class => "form-horizontal" do |f| %>
+      
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">郵便番号(ハイフンなし)</label>
+          <div class="col-sm-3">
+            <%= f.text_field :postal_code, :class => "form-control" %>
+          </div>
+        </div>
+        
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">住所</label>
+          <div class="col-sm">
+            <%= f.text_field :address, :class => "form-control" %>
+          </div>
+        </div>
+        
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">宛名</label>
+          <div class="col-sm-3">
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+          <%= f.submit "変更内容を保存", :class => "btn btn-success px-4 py-2 ml-3" %>
+        </div>
+        
+      <% end %>
+    </div>
