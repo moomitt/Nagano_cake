@@ -38,7 +38,8 @@ Rails.application.routes.draw do
     get 'orders/complete'
     resources :orders, only: [:new, :create, :index, :show]
     
-    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    delete 'addresses/:id' => 'addresses#destroy', as: 'destroy_address'
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

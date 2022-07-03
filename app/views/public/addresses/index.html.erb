@@ -1,2 +1,63 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h5 class="d-inline-block bg-light my-5 mx-5 px-3">配送先登録/一覧</h5></br>
+    </div>
+    
+    <div class="col-10 mx-auto">
+      <%= form_with model: @address, url: addresses_path, :class => "form-horizontal" do |f| %>
+      
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">郵便番号(ハイフンなし)</label>
+          <div class="col-sm-3">
+            <%= f.text_field :postal_code, :class => "form-control" %>
+          </div>
+        </div>
+        
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">住所</label>
+          <div class="col-sm">
+            <%= f.text_field :address, :class => "form-control" %>
+          </div>
+        </div>
+        
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-3 control-label mb-0">宛名</label>
+          <div class="col-sm-3">
+            <%= f.text_field :name, :class => "form-control" %>
+          </div>
+          <%= f.submit "新規登録", :class => "btn btn-success px-4 py-2 ml-3" %>
+        </div>
+        
+      <% end %>
+    </div>
+    
+    <div class="col-lg-10 col-md-12">
+        
+        <table class="table table-bordered border-dark my-5">
+          <thead class="table-active">
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </thead>
+          <tbody>
+          <% @addresses.each do |address| %>
+            <tr>
+              <td class="align-middle"><%= address.postal_code %></td>
+              <td class="align-middle"><%= address.address %></td>
+              <td class="align-middle"><%= address.name %></td>
+              <td>
+                <%= link_to '編集する', edit_address_path(address.id), :class => "btn btn-success px-3 ml-3" %>
+                <%= link_to '削除する', destroy_address_path(address.id), method: :delete, :class => "btn btn-danger px-3 ml-3" %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        
+    </div>
+      
+  </div>
+</div>
+
