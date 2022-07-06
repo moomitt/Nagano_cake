@@ -1,2 +1,73 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-3">
+      <h6 class="border d-inline-block mt-5 mb-0" style="width: 100%; text-align: center;">
+        <lg>ジャンル検索</lg>
+      </h6>
+      <div class="border" style="width: 100%; height: 350px;">
+        <ul class="p-3">
+          <% @genres.each do |genre| %>
+            <li class="mb-2"><%= genre.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="col-8">
+      <div class="border mt-5" style="width: 100%; height: 373px;">
+        <div class="col-7 border mx-auto mt-5 py-5">
+          <p>
+            ようこそ、ながのCAKEへ！</br>
+            このサイトは、ケーキ販売のECサイトになります。</br>
+            会員ではない方も商品の閲覧はできますが、</br>
+            購入には会員登録が必要になります。
+          </p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="row">
+    
+    <div class="col-3">
+    </div>
+    
+    <div class="col-9">
+      <h3 class="my-3">新着商品</h3>
+      <div class="d-inline-block px-0 mr-3" style="width: 20%;">
+        <div class="border mb-3" style="width:100%; height:100px">
+          
+        </div>
+        <p>商品名</p>
+        <p>￥0,000</p>
+      </div>
+      <div class="d-inline-block px-0 mr-3" style="width: 20%;">
+        <div class="border mb-3" style="width:100%; height:100px">
+          
+        </div>
+        <p>商品名</p>
+        <p>￥0,000</p>
+      </div>
+      <div class="d-inline-block px-0 mr-3" style="width: 20%;">
+        <div class="border mb-3" style="width:100%; height:100px">
+          
+        </div>
+        <p>商品名</p>
+        <p>￥0,000</p>
+      </div>
+      <div class="d-inline-block px-0 mr-3" style="width: 20%;">
+        <div class="border mb-3" style="width:100%; height:100px">
+          
+        </div>
+        <p>商品名</p>
+        <p>￥0,000</p>
+      </div>
+      
+      </br>
+      <u class="text-align-right"><%= link_to '全ての商品を見る＞', items_path, :id => "items-path" %></u>
+    </div>
+  </div>
+  
+</div>
