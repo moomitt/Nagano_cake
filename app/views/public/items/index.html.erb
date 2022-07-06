@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    
+    <%= render 'public/homes/sidebar', genres: @genres %>
+    
+    <div class="col-9">
+      <h3 class="my-5">商品一覧<small>（全<%= @items.count %>件）</small></h3>
+      
+      <% @items.each do |item| %>
+      <div class="d-inline-block px-0 mr-3" style="width: 20%; vertical-align: top;">
+        <div class="border mb-3" style="width:100%; height:100px">
+          <%= image_tag item.get_item_image(200, 100), :class => "img_fluid" %>
+        </div>
+        <p><strong><%= item.name %></strong></p>
+        <p><strong>￥<%= item.price.to_s(:delimited, delimiter: ',') %></strong></p>
+      </div>
+      <% end %>
+     
+     <%= paginate @items %>
+    </div>
+  </div>
+</div>
