@@ -9,7 +9,7 @@
       <% @items.each do |item| %>
       <div class="d-inline-block px-0 mr-3" style="width: 20%; vertical-align: top;">
         <div class="border mb-3" style="width:100%; height:100px">
-          <%= image_tag item.get_item_image(200, 100), :class => "img_fluid" %>
+          <%= image_tag item.get_item_image(200, 100), :class => "img_fluid mx-auto" %>
         </div>
         <p><strong><%= item.name %></strong></p>
         <p><strong>￥<%= item.price.to_s(:delimited, delimiter: ',') %></strong></p>
