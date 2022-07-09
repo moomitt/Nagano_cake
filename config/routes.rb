@@ -30,9 +30,9 @@ Rails.application.routes.draw do
     get 'customers/withdraw_confirm' => 'customers#confirm'
     patch 'customers/withdraw'
     
-    delete 'cart_items/:id' => 'cart_items#destroy', as: 'destroy_cart_item'
-    delete 'cart_items/empty', as: 'empty_cart_item'
-    resources :cart_items, only: [:index, :update, :create]
+    
+    delete 'cart_items/destroy_all', as: 'destroy_all_cart_item'
+    resources :cart_items, only: [:index, :update, :create, :destroy]
     
     patch 'orders/confirm'
     get 'orders/complete'

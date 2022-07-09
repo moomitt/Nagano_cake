@@ -13,12 +13,12 @@
           <p><%= @item.introduction %></p>
           <p>
             <strong><big>
-              ￥<%= (@item.price*1.1).round.to_s(:delimited, delimiter: ',' ) %>
+              ￥<%= @item.with_tax_price.to_s(:delimited, delimiter: ',' ) %>
             </big></strong>
             <small>（税込）</small>
           </p>
           
-          <%= form_with model: @cart_item do |f| %>
+          <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
             <%= f.hidden_field :item_id, :value => @item.id %>
             <%= f.hidden_field :customer_id, :value => current_customer.id %>
             <%= f.select :amount, *[1..5], :class => "form-control", include_blank: "個数選択" %>

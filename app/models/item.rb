@@ -8,6 +8,10 @@ class Item < ApplicationRecord
       item_image.variant(resize_to_limit: [width, height]).processed
     end
     
+  def with_tax_price
+    (price*1.1).floor
+  end
+    
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
