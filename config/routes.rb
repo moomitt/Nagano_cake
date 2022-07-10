@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     
+    resources :genres, only: [:show]
+    
     resources :items, only: [:index, :show]
     
     get 'customers/mypage' => 'customers#show'
