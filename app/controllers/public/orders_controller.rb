@@ -1,12 +1,14 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
-    @total_payment = @total_price.to_i + 800
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @total_price = 0
   end
   
-  def create
+  def confirm
     @order = Order.new(order_params)
-    @total_payment = @total_price.to_i + 800
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @total_price = 0
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
@@ -21,9 +23,9 @@ class Public::OrdersController < ApplicationController
     else
       @order.save
     end
-    redirect_to orders_confirm_path
+    render :confirm
   end
-
+  
   def complete
   end
 

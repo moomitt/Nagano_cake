@@ -1,1 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h5 class="d-inline-block bg-light my-5 mx-5 px-3">注文情報確認画面</h5>
+    </div>
+    
+    <div class="col-12">
+      <table class="table-bordered" style="width: 70%;">
+        <thead class="table-active">
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= image_tag cart_item.item.get_item_image(80,50) %>
+                <%= cart_item.item.name %>
+              </td>
+              <td><%= cart_item.item.with_tax_price.to_s(:delimited, dilimiter: "," ) %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= cart_item.subtotal.to_s(:delimited, delimiter: "," ) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <table class="table-bordered" style="width: 20%;">
+        <tbody>
+            <tr>
+              <td class="table-active">送料</td>
+              <td><%= @order.postage.to_s(:delimited, dilimiter: "," ) %></td>
+            </tr>
+            <tr>
+              <td class="table-active">商品合計</td>
+              <td><%= (@order.total_price - @order.postage).to_s(:delimited, dilimiter: "," ) %></td>
+            </tr>
+            <tr>
+              <td class="table-active">請求金額</td>
+              <td><%= @order.total_price.to_s(:delimited, dilimiter: "," ) %></td>
+            </tr>
+        </tbody>
+      </table>
+      
+    <div class="col-12">
+      <div class="row">
+        <h6 class="d-inline-block mt-4">支払方法</h6>
+        
+        <p class="d-inline-block ml-3 mt-4">
+          <% if @order.payment_method = "credit_card" %>
+            クレジットカード
+          <% elsif @order.payment_method = "transfer" %>
+          　銀行振込
+          <% end %>
+        </p>
+      </div>
+      
+      <div class="row">
+        <h6 class="d-inline-block mt-4">お届け先</h6>
+        <p class="d-inline-block ml-3 mt-4">
+            〒<%= @order.postal_code %> <%= @order.address %></br>
+            <%= @order.name %>
+        </p>
+      </div>
+    </div>
+      
+      
+      <div class="col-12" style="text-align: center;">
+        <%= link_to '注文を確定する', new_order_path, :class => "btn btn-success px-4" %>
+      </div>
 
+    </div>
+  </div>
+</div>

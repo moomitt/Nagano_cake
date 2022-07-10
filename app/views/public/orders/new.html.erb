@@ -5,10 +5,14 @@
     </div>
       
       <div class="col-12 mx-auto">
-        <%= form_with model: @order, :class => "form-horizontal" do |f| %>
+        <%= form_with model: @order, url: orders_confirm_path, :class => "form-horizontal" do |f| %>
           <%= f.hidden_field :customer_id, :value => current_customer.id %>
           <%= f.hidden_field :postage, :value => 800 %>
-          <%= f.hidden_field :total_price, :value => @total_payment.to_i %>
+          <% @cart_items.each do |cart_item| %>
+            <% cart_item.subtotal %>
+            <% @total_price += cart_item.subtotal %>
+          <% end %>
+          <%= f.hidden_field :total_price, :value => @total_price.to_i + 800 %>
           
         <h6 class="mt-3">支払方法</h6>
           <%= f.radio_button :payment_method, "credit_card", :class => "ml-5" %>
