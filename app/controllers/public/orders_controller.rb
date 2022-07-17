@@ -36,9 +36,11 @@ class Public::OrdersController < ApplicationController
     cart_items = CartItem.where(customer_id: current_customer.id)
     cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
+      @order_detail.order_id = @order.id
       @order_detail.item_id = cart_item.item_id
       @order_detail.amount = cart_item.amount
       @order_detail.price = cart_item.item.price
+      @order_detail.save
     end
     CartItem.where(customer_id: current_customer.id).destroy_all
     render :complete
@@ -48,6 +50,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.where(customer_id: current_customer.id)
+    @order_details = OrderDetail.where(order_id: params[:id])
   end
 
   def show
