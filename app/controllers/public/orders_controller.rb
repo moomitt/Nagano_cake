@@ -8,7 +8,11 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @cart_items = CartItem.where(customer_id: current_customer.id)
-    @total_price = 0
+    total_price = 0
+    @cart_items.each do |cart_item|
+      total_price += cart_item.subtotal
+    end
+    @order.total_price = total_price
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
@@ -24,6 +28,10 @@ class Public::OrdersController < ApplicationController
       @order.save
     end
     render :confirm
+  end
+  
+  def create
+    
   end
   
   def complete

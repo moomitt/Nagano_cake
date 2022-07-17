@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h5 class="d-inline-block bg-light my-5 mx-5 px-3">注文情報確認画面</h5>
+      <h5 class="d-inline-block bg-light my-5 mx-5 px-3">注文情報確認</h5>
     </div>
     
     <div class="col-12">
@@ -34,11 +34,11 @@
             </tr>
             <tr>
               <td class="table-active">商品合計</td>
-              <td><%= (@order.total_price - @order.postage).to_s(:delimited, dilimiter: "," ) %></td>
+              <td><%= @order.total_price.to_s(:delimited, dilimiter: "," ) %></td>
             </tr>
             <tr>
               <td class="table-active">請求金額</td>
-              <td><%= @order.total_price.to_s(:delimited, dilimiter: "," ) %></td>
+              <td><%= (@order.total_price + @order.postage).to_s(:delimited, dilimiter: "," ) %></td>
             </tr>
         </tbody>
       </table>
