@@ -17,17 +17,12 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
-      @order.save
     elsif params[:order][:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
-      @order.save
-    else
-      @order.save
     end
-    render :confirm
   end
   
   def create
@@ -43,7 +38,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.save
     end
     CartItem.where(customer_id: current_customer.id).destroy_all
-    render :complete
+    redirect_to orders_complete_path
   end
   
   def complete
@@ -51,10 +46,15 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.where(customer_id: current_customer.id)
-    @order_details = OrderDetail.where(order_id: params[:id])
+    @order_datails = OrderDetail.all
   end
 
   def show
+  end
+  
+  def destroy
+   @order = Order.find(params[:id])
+   @order.destroy
   end
   
   private
