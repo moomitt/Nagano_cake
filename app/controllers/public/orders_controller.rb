@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
     @cart_items.each do |cart_item|
       total_price += cart_item.subtotal
     end
-    @order.total_price = total_price
+    @order.total_price = total_price + 800
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
@@ -31,7 +31,17 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
-    
+    @order = Order.new(order_params)
+    @order.save
+    cart_items = CartItem.where(customer_id: current_customer.id)
+    cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.item_id = cart_item.item_id
+      @order_detail.amount = cart_item.amount
+      @order_detail.price = cart_item.item.price
+    end
+    CartItem.where(customer_id: current_customer.id).destroy_all
+    render :complete
   end
   
   def complete
@@ -45,7 +55,7 @@ class Public::OrdersController < ApplicationController
   
   private
   def order_params
-    params.require(:order).permit(:customer_id, :postage, :total_price,
+    params.require(:order).permit(:id, :customer_id, :postage, :total_price,
     :payment_method, :postal_code, :address, :name)
   end
   

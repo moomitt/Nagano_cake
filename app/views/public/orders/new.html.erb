@@ -6,6 +6,7 @@
       
       <div class="col-12 mx-auto">
         <%= form_with model: @order, url: orders_confirm_path, :class => "form-horizontal" do |f| %>
+          <%= f.hidden_field :id, :value =>  @order.id %>
           <%= f.hidden_field :customer_id, :value => current_customer.id %>
           <%= f.hidden_field :postage, :value => 800 %>
           <%= f.hidden_field :total_price, :value => @total_price.to_i %>
