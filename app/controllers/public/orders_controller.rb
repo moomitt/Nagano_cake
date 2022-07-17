@@ -34,7 +34,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.order_id = @order.id
       @order_detail.item_id = cart_item.item_id
       @order_detail.amount = cart_item.amount
-      @order_detail.price = cart_item.item.price
+      @order_detail.price = cart_item.item.with_tax_price
       @order_detail.save
     end
     CartItem.where(customer_id: current_customer.id).destroy_all
@@ -50,6 +50,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_datails = OrderDetail.where(order_id: @order.id)
   end
   
   def destroy
