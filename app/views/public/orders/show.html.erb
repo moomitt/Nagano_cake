@@ -22,20 +22,26 @@
             </tr>
             <tr>
               <td class="table-active">支払方法</td>
-              <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+              <td>
+                <% if @order.payment_method = "credit_card" %>
+                  クレジットカード
+                <% elsif @order.payment_method = "transfer" %>
+                　銀行振込
+                <% end %>
+              </td>
             </tr>
             <tr>
               <td class="table-active">ステータス</td>
               <td>
                 <% if @order.status == "wait_payment" %>
                   入金待ち
-                <% elsif @order.status == "" %>
+                <% elsif @order.status == "confirm_payment" %>
                   入金確認
                 <% elsif @order.status == "making" %>
                   製作中
-                <% elsif @order.status == "" %>
-                　発送準備中
-                <% elsif @order.status == "" %>
+                <% elsif @order.status == "preparing_delivery" %>
+                  発送準備中
+                <% elsif @order.status == "delivered" %>
                   発送済み
                 <% end %>
               </td>

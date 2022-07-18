@@ -48,9 +48,9 @@
         <h6 class="d-inline-block mt-4">支払方法</h6>
         
         <p class="d-inline-block ml-3 mt-4">
-          <% if @order.payment_method = "credit_card" %>
+          <% if @order.payment_method == "credit_card" %>
             クレジットカード
-          <% elsif @order.payment_method = "transfer" %>
+          <% elsif @order.payment_method == "transfer" %>
           　銀行振込
           <% end %>
         </p>

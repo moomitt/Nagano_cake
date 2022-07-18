@@ -15,7 +15,11 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td><u><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></u></td>
+              <td><u>
+                <%= link_to admin_order_path(order.id) do %>
+                  <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                <% end %>
+              </u></td>
               <td><%= order.customer.last_name + order.customer.first_name %></td>
               <td>
                 <% @amount = 0 %>
@@ -27,13 +31,13 @@
               <td>
                 <% if order.status == "wait_payment" %>
                   入金待ち
-                <% elsif order.status == "" %>
+                <% elsif order.status == "confirm_payment" %>
                   入金確認
                 <% elsif order.status == "making" %>
                   製作中
-                <% elsif order.status == "" %>
-                　発送準備中
-                <% elsif order.status == "" %>
+                <% elsif order.status == "preparing_delivery" %>
+                  発送準備中
+                <% elsif order.status == "delivered" %>
                   発送済み
                 <% end %>
               </td>

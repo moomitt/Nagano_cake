@@ -32,13 +32,13 @@
               <td>
                 <% if order.status == "wait_payment" %>
                   入金待ち
-                <% elsif order.status == "" %>
+                <% elsif order.status == "confirm_payment" %>
                   入金確認
                 <% elsif order.status == "making" %>
                   製作中
-                <% elsif order.status == "" %>
+                <% elsif order.status == "preparing_delivery" %>
                 　発送準備中
-                <% elsif order.status == "" %>
+                <% elsif order.status == "delivered" %>
                   発送済み
                 <% end %>
               </td>

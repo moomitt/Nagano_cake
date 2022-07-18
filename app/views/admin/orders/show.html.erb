@@ -1,2 +1,109 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h5 class="d-inline-block bg-light my-5 mx-5 px-3">注文履歴詳細</h5></br>
+    </div>
+    
+    <div class="col-12">
+      <div class="row mt-1">
+        <h6 class="col-2 d-inline-block">購入者</h6>
+        <div class="col-9 d-inline-block">
+          <%= link_to admin_customer_path(@order.customer_id) do %>
+            <u><%= @order.customer.last_name+@order.customer.first_name %></u>
+          <% end %>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <h6 class="col-2 d-inline-block">注文日</h6>
+        <div class="col-9 d-inline-block"><%= @order.created_at.strftime('%Y/%m/%d') %></div>
+      </div>
+      <div class="row mt-1">
+        <h6 class="col-2 d-inline-block">配送先</h6>
+        <div class="col-9 d-inline-block">
+          〒<%= @order.postal_code %> <%= @order.address %></br>
+          <%= @order.name %>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <h6 class="col-2 d-inline-block">支払方法</h6>
+        <div class="col-9 d-inline-block">
+          <% if @order.payment_method = "credit_card" %>
+            クレジットカード
+          <% elsif @order.payment_method = "transfer" %>
+          　銀行振込
+          <% end %>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <h6 class="col-2 d-inline-block">注文ステータス</h6>
+        <div class="col-9 d-inline-block">
+          <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+            <%= f.select :status, [["入金待ち", "wait_payment"], ["入金確認", "confirm_payment"], 
+            ["製作中", "making"], ["発送準備中", "preparing_delivery"], ["発送済み", "delivered"]], 
+            :class => "form-control" %>
+            <%= f.submit '更新', :class => "btn btn-sm btn-success ml-4" %>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-8">
+          <table class="table mt-5">
+            <thead class="table-active">
+              <th>商品名</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th>製作ステータス</th>
+            </thead>
+            <tbody>
+              <% @order_details.each do |order_detail| %>
+              <tr>
+                <td><%= order_detail.item.name %></td>
+                <td><%= order_detail.price.to_s(:delimited, delimiter: "," ) %></td>
+                <td><%= order_detail.amount %></td>
+                <td><%= order_detail.subtotal.to_s(:delimited, delimiter: "," ) %></td>
+                <td>
+                  <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+                    <%= f.select :making_status, [["製作不可", "imppossible_making"], ["製作待ち", "wait_making"],
+                    ["製作中", "making"], ["製作完了", "finish"]], :class => "form-control" %>
+                    <%= f.submit '更新', :class => "btn btn-sm btn-success ml-4" %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="col-3">
+          <table class="table mt-5 table-borderless">
+            <tbody>
+              <tr>
+                <td><strong>商品合計</strong></td>
+                <td><%= (@order.total_price - @order.postage).to_s(:delimited, delimiter: ',' ) %></td>
+              </tr>
+              <tr>
+                <td><strong>送料</strong></td>
+                <td><%= @order.postage.to_s(:delimited, delimiter: ',' ) %></td>
+              </tr>
+              <tr>
+                <td><strong>請求合計金額</strong></td>
+                <td><strong><%= @order.total_price.to_s(:delimited, delimiter: ',' ) %></strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+      
+      
+      
+      
+    </div>
+    
+  </div>
+</div>
+
+
+
