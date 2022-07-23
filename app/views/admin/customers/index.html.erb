@@ -5,7 +5,7 @@
     </div>
     
     <div class="col-10 mx-auto">
-      <table class="table">
+      <table class="table" style="border-bottom: 1px solid #dcdcdc">
         <thead class="table-active">
           <th>会員ID</th>
           <th><u>氏名</u></th>
@@ -28,7 +28,10 @@
         </tbody>
       </table>
       
-      <%= paginate @customers %>
+      <div class="col-10 mx-auto" style="text-align: center;">
+        <%= paginate @customers %>
+      </div>
+      
     </div>
     
   </div>

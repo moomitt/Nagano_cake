@@ -1,16 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-6">
       <h5 class="d-inline-block bg-light my-5 mx-5 px-3">商品一覧</h5>
-      
-      <div class="d-inline-block my-5 ml-auto mr-5" >
+    </div>
+    
+    <div class="col-6" style="text-align: right;">
+      <div class="d-inline-block my-5">
         <%= link_to '+', new_admin_item_path, :class => "btn btn-lg btn-outline-secondary rounded-circle p-0",
-      :style =>"width:2rem;height:2rem;" %>
+        :style => "width: 2.3rem; height: 2.3rem; line-height: 2.3rem; font-weight: bolder;" %>
       </div>
     </div>
       
     <div class="col-12">
-      <table class="table">
+      <table class="table table-borderless" style="border-top: 1px solid #d3d3d3; border-bottom: 1px solid #d3d3d3;">
         <thead class="table-active">
           <th>商品ID</th>
           <th>商品名</th>
@@ -37,6 +39,8 @@
       
     </div>
   
-  <%= paginate @items %>
+    <div class="col-12" style="text-align: center;">
+      <%= paginate @items %>
+    </div>
   </div>
 </div>

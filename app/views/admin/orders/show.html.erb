@@ -4,7 +4,7 @@
       <h5 class="d-inline-block bg-light my-5 mx-5 px-3">注文履歴詳細</h5></br>
     </div>
     
-    <div class="col-12">
+    <div class="col-10">
       <div class="row mt-1">
         <h6 class="col-2 d-inline-block">購入者</h6>
         <div class="col-9 d-inline-block">
@@ -34,21 +34,23 @@
           <% end %>
         </div>
       </div>
-      <div class="row mt-1">
-        <h6 class="col-2 d-inline-block">注文ステータス</h6>
+      <div class="row mt-1 d-flex align-items-center">
+        <h6 class="col-2 d-inline-block mb-0">注文ステータス</h6>
         <div class="col-9 d-inline-block">
           <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
             <%= f.select :status, [["入金待ち", "wait_payment"], ["入金確認", "confirm_payment"], 
             ["製作中", "making"], ["発送準備中", "preparing_delivery"], ["発送済み", "delivered"]], 
-            :class => "form-control" %>
-            <%= f.submit '更新', :class => "btn btn-sm btn-success ml-4" %>
+            :class => "form-control mt-2" %>
+            <%= f.submit '更新', :class => "btn btn-sm btn-success pt-2 ml-4" %>
           <% end %>
         </div>
       </div>
-      
+    </div>
+    
+    <div class="col-11">  
       <div class="row">
         <div class="col-8">
-          <table class="table mt-5">
+          <table class="table table-borderless mt-5" style="border-top: 1px solid #dcdcdc; border-bottom: 1px solid #dcdcdc;">
             <thead class="table-active">
               <th>商品名</th>
               <th>単価（税込）</th>
@@ -59,15 +61,15 @@
             <tbody>
               <% @order_details.each do |order_detail| %>
               <tr>
-                <td><%= order_detail.item.name %></td>
-                <td><%= order_detail.price.to_s(:delimited, delimiter: "," ) %></td>
-                <td><%= order_detail.amount %></td>
-                <td><%= order_detail.subtotal.to_s(:delimited, delimiter: "," ) %></td>
-                <td>
+                <td class="align-middle"><%= order_detail.item.name %></td>
+                <td class="align-middle"><%= order_detail.price.to_s(:delimited, delimiter: "," ) %></td>
+                <td class="align-middle"><%= order_detail.amount %></td>
+                <td class="align-middle"><%= order_detail.subtotal.to_s(:delimited, delimiter: "," ) %></td>
+                <td class="align-middle">
                   <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
                     <%= f.select :making_status, [["製作不可", "imppossible_making"], ["製作待ち", "wait_making"],
                     ["製作中", "making"], ["製作完了", "finish"]], :class => "form-control" %>
-                    <%= f.submit '更新', :class => "btn btn-sm btn-success ml-4" %>
+                    <%= f.submit '更新', :class => "btn btn-sm btn-success pt-2 ml-4" %>
                   <% end %>
                 </td>
               </tr>
@@ -76,20 +78,22 @@
           </table>
         </div>
         
-        <div class="col-3">
+        <div class="col-1"></div>
+        
+        <div class="col-3" style="display: flex; align-items: flex-end;">
           <table class="table mt-5 table-borderless">
             <tbody>
               <tr>
-                <td><strong>商品合計</strong></td>
-                <td><%= (@order.total_price - @order.postage).to_s(:delimited, delimiter: ',' ) %></td>
+                <td class="py-1"><strong>商品合計</strong></td>
+                <td class="py-1" style="text-align: right;"><%= (@order.total_price - @order.postage).to_s(:delimited, delimiter: ',' ) %>円</td>
               </tr>
               <tr>
-                <td><strong>送料</strong></td>
-                <td><%= @order.postage.to_s(:delimited, delimiter: ',' ) %></td>
+                <td class="py-1"><strong>送料</strong></td>
+                <td class="py-1" style="text-align: right;"><%= @order.postage.to_s(:delimited, delimiter: ',' ) %>円</td>
               </tr>
               <tr>
-                <td><strong>請求合計金額</strong></td>
-                <td><strong><%= @order.total_price.to_s(:delimited, delimiter: ',' ) %></strong></td>
+                <td class="py-1"><strong>請求合計金額</strong></td>
+                <td class="py-1" style="text-align: right;"><strong><%= @order.total_price.to_s(:delimited, delimiter: ',' ) %>円</strong></td>
               </tr>
             </tbody>
           </table>

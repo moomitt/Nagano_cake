@@ -6,44 +6,44 @@
       </h5></br>
     </div>
     
-    <div class="col-10 mx-auto">
+    <div class="col-11 mx-auto">
       <div class="row mb-3">
-        <label class="col-sm-3">会員ID</label>
+        <label class="col-sm-2">会員ID</label>
         <%= @customer.id %>
       </div>
       
       <div class="row mb-3">
-        <label class="col-sm-3">氏名</label>
+        <label class="col-sm-2">氏名</label>
         <%= @customer.last_name %>　<%= @customer.first_name %>
       </div>
       
       <div class="row mb-3">
-        <label class="col-sm-3">フリガナ</label>
+        <label class="col-sm-2">フリガナ</label>
         <%= @customer.last_name_kana %>　<%= @customer.first_name_kana %>
       </div>
       
       <div class="row mb-3">
-        <label class="col-sm-3">郵便番号</label>
+        <label class="col-sm-2">郵便番号</label>
         <%= @customer.postal_code %>
       </div>
       
       <div class="row mb-3">
-        <label class="col-sm-3">住所</label>
+        <label class="col-sm-2">住所</label>
         <%= @customer.address %>
       </div>
       
       <div class="row mb-3">
-        <label class="col-sm-3">電話番号</label>
+        <label class="col-sm-2">電話番号</label>
         <%= @customer.telephone_number %>
       </div>
       
       <div class="row mb-3">
-        <label class="col-sm-3">メールアドレス</label>
+        <label class="col-sm-2">メールアドレス</label>
         <%= @customer.email %>
       </div>
       
       <div class="row mb-3">
-        <label class="col-sm-3">会員ステータス</label>
+        <label class="col-sm-2">会員ステータス</label>
         <% if @customer.is_deleted? %>
           <span class="text-secondary"><strong>退会</strong></span>
         <% else %>
@@ -52,9 +52,9 @@
       </div>
       
       <div class="row mb-3">
-        <label class="col-sm-3"></label>
-        <%= link_to '編集する', edit_admin_customer_path, :class => "btn btn-success px-4 py-2 mr-5" %>
-        <%= link_to '注文履歴一覧を見る', edit_admin_customer_path, :class => "btn btn-primary px-4 py-2" %>
+        <label class="col-sm-2"></label>
+        <%= link_to '編集する', edit_admin_customer_path, :class => "btn btn-sm btn-success px-4 pt-2 mr-5" %>
+        <%= link_to '注文履歴一覧を見る', edit_admin_customer_path, :class => "btn btn-sm btn-primary px-3 pt-2" %>
       </div>
       
     </div>

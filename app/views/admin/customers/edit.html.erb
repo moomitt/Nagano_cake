@@ -6,65 +6,65 @@
       </h5></br>
     </div>
     
-    <div class="col-10 mx-auto">
+    <div class="col-11 mx-auto">
       
       <%= form_with model: @customer, url: admin_customer_path(@customer.id), :class => "form-horizontal" do |f| %>
       
         <div class="row mb-3 d-flex align-items-center">
-          <label class="col-sm-3">会員ID</label>
+          <label class="col-sm-2">会員ID</label>
           <div class="col-sm-3 ml-3 mb-2"><%= @customer.id %></div>
         </div>
       
         <div class="row mb-3 d-flex align-items-center">
-          <label class="col-sm-3 control-label mb-0">氏名</label>
+          <label class="col-sm-2 control-label mb-0">氏名</label>
           <div class="col-sm-3">
-            <%= f.text_field :last_name, :class => "form-control" %>
+            <%= f.text_field :last_name, :class => "form-control-sm" %>
           </div>
           <div class="col-sm-3">
-            <%= f.text_field :first_name, :class => "form-control" %>
-          </div>
-        </div>
-        
-        <div class="row mb-3 d-flex align-items-center">
-          <label class="col-sm-3 control-label mb-0">フリガナ</label>
-          <div class="col-sm-3">
-            <%= f.text_field :last_name_kana, :class => "form-control" %>
-          </div>
-          <div class="col-sm-3">
-            <%= f.text_field :first_name_kana, :class => "form-control" %>
+            <%= f.text_field :first_name, :class => "form-control-sm" %>
           </div>
         </div>
         
         <div class="row mb-3 d-flex align-items-center">
-          <label class="col-sm-3 control-label mb-0">郵便番号</label>
+          <label class="col-sm-2 control-label mb-0">フリガナ</label>
           <div class="col-sm-3">
-            <%= f.text_field :postal_code, :class => "form-control" %>
+            <%= f.text_field :last_name_kana, :class => "form-control-sm" %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.text_field :first_name_kana, :class => "form-control-sm" %>
           </div>
         </div>
         
         <div class="row mb-3 d-flex align-items-center">
-          <label class="col-sm-3 control-label mb-0">住所</label>
+          <label class="col-sm-2 control-label mb-0">郵便番号</label>
+          <div class="col-sm-3">
+            <%= f.text_field :postal_code, :class => "form-control-sm" %>
+          </div>
+        </div>
+        
+        <div class="row mb-3 d-flex align-items-center">
+          <label class="col-sm-2 control-label mb-0">住所</label>
           <div class="col-sm">
-            <%= f.text_field :address, :class => "form-control" %>
+            <%= f.text_field :address, :class => "form-control-sm col-8" %>
           </div>
         </div>
         
         <div class="row mb-3 d-flex align-items-center">
-          <label class="col-sm-3 control-label mb-0">電話番号</label>
+          <label class="col-sm-2 control-label mb-0">電話番号</label>
           <div class="col-sm-3">
-            <%= f.text_field :telephone_number, :class => "form-control" %>
+            <%= f.text_field :telephone_number, :class => "form-control-sm" %>
           </div>
         </div>
         
         <div class="row mb-4 d-flex align-items-center">
-          <label class="col-sm-3 control-label mb-0">メールアドレス</label>
+          <label class="col-sm-2 control-label mb-0">メールアドレス</label>
           <div class="col-sm-3">
-            <%= f.email_field :email, :class => "form-control" %>
+            <%= f.email_field :email, :class => "form-control-sm" %>
           </div>
         </div>
         
         <div class="row mb-5">
-          <label class="col-sm-3 control-label mb-0">会員ステータス</label>
+          <label class="col-sm-2 control-label mb-0">会員ステータス</label>
           <div class="col-sm-6 form-check form-check-inline px-2">
               <%= f.radio_button :is_deleted, :false, :class => "form-check-input mx-2" %>
               <label class="form-check-label">有効</label>
@@ -74,7 +74,7 @@
         </div>
         
         <div class="row mb-3">
-          <label class="col-sm-3 control-label"></label>
+          <label class="col-sm-2 control-label"></label>
           <%= f.submit "変更を保存", :class => "btn btn-success px-4 py-2 ml-3" %>
         </div>
         
