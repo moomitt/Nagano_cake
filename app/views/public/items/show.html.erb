@@ -19,10 +19,12 @@
           </p>
           
           <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+           <% if customer_signed_in? %>
             <%= f.hidden_field :item_id, :value => @item.id %>
             <%= f.hidden_field :customer_id, :value => current_customer.id %>
             <%= f.select :amount, *[1..5], :class => "form-control", include_blank: "個数選択" %>
             <%= f.submit 'カートに入れる', :class => "btn btn-sm btn-success ml-5 px-4" %>
+           <% end %>
           <% end %>
           
         </div>
