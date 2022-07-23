@@ -21,6 +21,10 @@
       #login-path, #signup-path, #items-path{
         color: blue;
       }
+      .pagination {
+        margin-top: 30px;
+        justify-content: center;
+      }
     </style>
   </head>
 
@@ -99,7 +103,7 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <div class="input-group" style="margin-left: auto; margin-right: 30px; position: relative;">
-                  <input type="text" class=" d-block form-control-sm" placeholder="Search">
+                  <input type="text" class="d-block form-control-sm" placeholder="Search">
                   <span class="fas fa-search mt-2 d-inline-block" style="position: absolute; left: 150px;"></span>
                 </div>
               </li>
@@ -114,6 +118,7 @@
       <%= yield %>
     </main>
     
-    <footer class="bg-light border-top mt-5"></footer>
+      <footer class="bg-light border-top mt-5"></footer>
+    
   </body>
 </html>

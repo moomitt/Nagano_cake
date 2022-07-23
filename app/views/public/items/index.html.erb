@@ -4,7 +4,7 @@
     <%= render 'public/homes/sidebar', genres: @genres %>
     
     <div class="col-9">
-      <h3 class="my-5">商品一覧<small>（全<%= @items.count %>件）</small></h3>
+      <h3 class="my-5">商品一覧<small>（全<%= @all_items.count %>件）</small></h3>
       
       <% @items.each do |item| %>
         <div class="d-inline-block px-0 mr-3" style="width: 20%; vertical-align: top;">
@@ -18,7 +18,9 @@
         </div>
       <% end %>
      
-     <%= paginate @items %>
+     <div class="col-10">
+       <%= paginate @items %>
+     </div>
      
     </div>
   </div>
