@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 my-5" style="text-align: center;">
+    
+    <div class="col-12 my-5" style="text-align: center; height: 500px;">
+      
       <p class="my-5"><strong>本当に退会しますか？</strong></p>
       <p class="mb-5">退会すると、会員登録情報や</br>
         これまでの購入履歴が閲覧できなくなります。</br>
         退会する場合は、「退会する」をクリックしてください。</p>
         
-      <%= link_to '退会しない', customers_mypage_path, :class => "btn btn-primary px-4" %>
-      <%= link_to '退会する', customers_withdraw_path, method: :patch, :class => "btn btn-danger px-4 ml-5" %>
+      <%= link_to '退会しない', customers_mypage_path, :class => "btn btn-sm btn-primary px-4 mx-3" %>
+      <%= link_to '退会する', customers_withdraw_path, method: :patch, :class =>  "btn btn-sm btn-danger px-4 mx-3" %>
     </div>
     
   </div>

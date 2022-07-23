@@ -4,35 +4,37 @@
       <h5 class="d-inline-block bg-light my-5 mx-5 px-3">配送先登録/一覧</h5></br>
     </div>
     
-    <div class="col-10 mx-auto">
+    <div class="col-10">
       <%= form_with model: @address, url: addresses_path, :class => "form-horizontal" do |f| %>
       
-        <div class="row mb-3 d-flex align-items-center">
+        <div class="row ml-3 mb-2 d-flex align-items-center">
           <label class="col-sm-3 control-label mb-0">郵便番号(ハイフンなし)</label>
           <div class="col-sm-3">
-            <%= f.text_field :postal_code, :class => "form-control" %>
+            <%= f.text_field :postal_code, :class => "form-control-sm" %>
           </div>
         </div>
         
-        <div class="row mb-3 d-flex align-items-center">
+        <div class="row ml-3 mb-2 d-flex align-items-center">
           <label class="col-sm-3 control-label mb-0">住所</label>
           <div class="col-sm">
-            <%= f.text_field :address, :class => "form-control" %>
+            <%= f.text_field :address, :class => "form-control-sm col-9" %>
           </div>
         </div>
         
-        <div class="row mb-3 d-flex align-items-center">
+        <div class="row ml-3 mb-2 d-flex align-items-center">
           <label class="col-sm-3 control-label mb-0">宛名</label>
           <div class="col-sm-3">
-            <%= f.text_field :name, :class => "form-control" %>
+            <%= f.text_field :name, :class => "form-control-sm" %>
           </div>
-          <%= f.submit "新規登録", :class => "btn btn-success px-4 py-2 ml-3" %>
+          <div class="col-sm-6" style="text-align: right;">
+            <%= f.submit "新規登録", :class => "btn btn-sm btn-success px-5" %>
+          </div>
         </div>
         
       <% end %>
     </div>
     
-    <div class="col-lg-10 col-md-12">
+    <div class="col-lg-8 col-md-10" style="margin-bottom: 50px;">
         
         <table class="table table-bordered border-dark my-5">
           <thead class="table-active">
@@ -44,12 +46,12 @@
           <tbody>
           <% @addresses.each do |address| %>
             <tr>
-              <td class="align-middle"><%= address.postal_code %></td>
-              <td class="align-middle"><%= address.address %></td>
-              <td class="align-middle"><%= address.name %></td>
-              <td>
-                <%= link_to '編集する', edit_address_path(address.id), :class => "btn btn-success px-3 ml-3" %>
-                <%= link_to '削除する', destroy_address_path(address.id), method: :delete, :class => "btn btn-danger px-3 ml-3" %>
+              <td class="align-middle" style="width: 15%;"><%= address.postal_code %></td>
+              <td class="align-middle" style="width: 40%;"><%= address.address %></td>
+              <td class="align-middle" style="width: 15%;"><%= address.name %></td>
+              <td style="text-align: center; width: 30%;">
+                <%= link_to '編集する', edit_address_path(address.id), :class => "btn btn-sm btn-success px-3" %>
+                <%= link_to '削除する', destroy_address_path(address.id), method: :delete, :class => "btn btn-sm btn-danger px-3 ml-2" %>
               </td>
             </tr>
           <% end %>

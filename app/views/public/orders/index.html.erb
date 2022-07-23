@@ -5,14 +5,14 @@
     </div>
     
     <div class="col-12">
-      <table class="table-bordered" style="width: 100%;">
+      <table class="table-bordered mb-5" style="width: 100%;">
         <thead class="table-active">
-          <th>注文日</th>
-          <th>配送先</th>
-          <th>注文商品</th>
-          <th>支払金額</th>
-          <th>ステータス</th>
-          <th>注文詳細</th>
+          <th class="py-2">注文日</th>
+          <th class="py-2">配送先</th>
+          <th class="py-2">注文商品</th>
+          <th class="py-2">支払金額</th>
+          <th class="py-2">ステータス</th>
+          <th class="py-2">注文詳細</th>
         </thead>
         <tbody>
           <% @orders.each do |order| %>
@@ -28,7 +28,7 @@
                   <%= order_detail.item.name %></br>
                 <% end %>
               </td>
-              <td><%= order.total_price.to_s(:delimited, delimiter: ',') %></td>
+              <td><%= order.total_price.to_s(:delimited, delimiter: ',') %>円</td>
               <td>
                 <% if order.status == "wait_payment" %>
                   入金待ち
@@ -42,8 +42,9 @@
                   発送済み
                 <% end %>
               </td>
-              <td><%= link_to '表示する', order_path(order.id), :class => "btn btn-sm btn-primary" %></td>
-              <td><%= link_to '削除', order_path(order.id), method: :delete, :class => "btn btn-sm btn-danger" %></td>
+              <td style="text-align: center;">
+                <%= link_to '表示する', order_path(order.id), :class => "btn btn-sm btn-primary mx-2" %>
+              </td>
             </tr>
           <% end %>
         </tbody>
